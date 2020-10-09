@@ -3,16 +3,17 @@ const cors = require('cors');
 const helmet = require('helmet'); 
 
 const server = express(); 
-const db = require('../data/db-config'); 
+const recipesRouter = require('../recipes/recipes-router'); 
 
-//! server.use statements
+//! server.use statements REMEMBER ORDER MATTERS !// 
 server.use(express.json()); 
 server.use(cors()); 
 server.use(helmet()); 
-
-//! routers
+//! routers go here !//
+server.use('/api/recipes', recipesRouter); 
 
 server.get('/', (req, res) => {
-    res.send({ message: "This server is running!" }); 
+    res.send({ message: "This server is bumping yo!" }); 
 }); 
+
 module.exports = server; 
